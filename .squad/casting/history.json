@@ -1,0 +1,29 @@
+{
+  "universe_usage_history": [
+    {
+      "universe": "Alien",
+      "assigned_at": "2026-02-23T15:46:06.4008733Z",
+      "assignment_id": "alien-20260223T154229Z",
+      "members": [
+        "ripley",
+        "bishop",
+        "parker",
+        "lambert",
+        "dallas"
+      ]
+    }
+  ],
+  "assignment_cast_snapshots": {
+    "alien-20260223T154229Z": {
+      "universe": "Alien",
+      "assigned_at": "2026-02-23T15:46:06.4008733Z",
+      "members": [
+        "ripley",
+        "bishop",
+        "parker",
+        "lambert",
+        "dallas"
+      ]
+    }
+  }
+}
