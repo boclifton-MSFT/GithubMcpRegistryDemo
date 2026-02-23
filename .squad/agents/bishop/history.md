@@ -14,4 +14,4 @@
 ## Team Updates
 
 📌 Team update (2026-02-23): Platform scaffold complete with .NET 10 minimal API project and successful build — decided by Parker
-
+📌 Team update (2026-02-23T10-11-04): X-Registry-Api-Key security gate added to POST /v0.1/publish with config-driven validation and 401 response for unauthorized requests — decided by Bishop
