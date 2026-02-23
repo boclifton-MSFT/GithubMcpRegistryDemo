@@ -29,3 +29,9 @@
 **What:** Changed `GithubMcpRegistryDemo.http` host variable from `http://localhost:5218` to `https://localhost:7219`.
 **Why:** The API enforces HTTPS redirection, and some REST clients can drop custom headers while following redirects. Pointing sample requests directly at HTTPS keeps `X-Registry-Api-Key` auth behavior deterministic for the `publish-policy authorized request`.
 **Verification:** `dotnet build --nologo` passes; smoke tests show publish unauthorized request returns `401` and authorized request returns `200`.
+
+### 2026-02-23: Publish API key normalization for challenge reliability
+**By:** Bishop (Backend Dev)  
+**What:** Keep the existing `publish-api-key` authentication scheme and `publish-policy`, but normalize API key values in the auth handler by trimming and unwrapping optional surrounding quotes before comparison; also format the `.http` `@RegistryApiKey` variable without extra spaces around `=`.  
+**Why:** Local clients and variable sources can provide quoted/space-padded values that look valid but otherwise fail strict string equality and trigger `AuthenticationScheme: publish-api-key was challenged.`  
+**Verification:** `dotnet build --nologo` passes; smoke tests return `401` (no key), `200` (exact key), and `200` (quoted key) for `POST /v0.1/publish`.
