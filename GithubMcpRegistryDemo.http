@@ -1,0 +1,83 @@
+@GithubMcpRegistryDemo_HostAddress = https://localhost:7219
+@RegistryApiKey = dev-only-change-me
+
+GET {{GithubMcpRegistryDemo_HostAddress}}/v0.1/health
+Accept: application/json
+
+###
+
+GET {{GithubMcpRegistryDemo_HostAddress}}/v0.1/servers
+Accept: application/json
+
+###
+
+GET {{GithubMcpRegistryDemo_HostAddress}}/v0.1/servers?limit=1
+Accept: application/json
+
+###
+
+GET {{GithubMcpRegistryDemo_HostAddress}}/v0.1/servers?search=filesystem&version=latest
+Accept: application/json
+
+###
+
+GET {{GithubMcpRegistryDemo_HostAddress}}/v0.1/servers/io.github.demo%2Ffilesystem/versions
+Accept: application/json
+
+###
+
+GET {{GithubMcpRegistryDemo_HostAddress}}/v0.1/servers/io.github.demo%2Ffilesystem/versions/latest
+Accept: application/json
+
+###
+
+# publish-policy challenge (expect 401 without X-Registry-Api-Key)
+POST {{GithubMcpRegistryDemo_HostAddress}}/v0.1/publish
+Content-Type: application/json
+
+{
+  "name": "io.github.demo/weather",
+  "description": "Weather MCP server exposing forecast tools and alerts.",
+  "version": "1.0.0",
+  "title": "Weather",
+  "repository": {
+    "url": "https://github.com/example/weather-mcp",
+    "source": "github"
+  },
+  "packages": [
+    {
+      "registryType": "npm",
+      "registryBaseUrl": "https://registry.npmjs.org",
+      "identifier": "@example/weather-mcp",
+      "version": "1.0.0"
+    }
+  ]
+}
+
+###
+
+# publish-policy authorized request
+POST {{GithubMcpRegistryDemo_HostAddress}}/v0.1/publish
+Content-Type: application/json
+X-Registry-Api-Key: dev-only-change-me
+
+{
+  "name": "io.github.demo/weather",
+  "description": "Weather MCP server exposing forecast tools and alerts.",
+  "version": "1.0.0",
+  "title": "Weather",
+  "repository": {
+    "url": "https://github.com/example/weather-mcp",
+    "source": "github"
+  },
+  "packages": [
+    {
+      "registryType": "npm",
+      "registryBaseUrl": "https://registry.npmjs.org",
+      "identifier": "@example/weather-mcp",
+      "version": "1.0.0"
+    }
+  ]
+}
+
+###
