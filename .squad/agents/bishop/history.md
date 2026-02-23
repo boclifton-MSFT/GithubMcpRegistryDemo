@@ -9,6 +9,7 @@
 
 - Initial team setup completed with Alien cast naming.
 - Implementing MCP registry endpoints is cleaner with a small in-memory store plus endpoint mapping extension methods, which keeps API behavior deterministic while remaining easy to swap for persistent storage later.
+- Securing `POST /v0.1/publish` can stay localized by validating `X-Registry-Api-Key` directly in the endpoint handler against a config value (`RegistrySecurity:PublishApiKey`) and returning `401` before request validation/publish logic.
 
 ## Team Updates
 

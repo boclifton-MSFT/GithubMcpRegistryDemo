@@ -1,9 +1,9 @@
 ---
-updated_at: 2026-02-23T15:46:06.4008733Z
-focus_area: Implementing GitHub MCP Registry API
+updated_at: 2026-02-23T16:03:31.2503730Z
+focus_area: Securing publish endpoint
 active_issues: []
 ---
 
 # What We're Focused On
 
-Implementing initial .NET 10 minimal API surface for a GitHub custom MCP Registry.
+Adding basic security controls to POST /v0.1/publish while preserving current MCP registry behavior.
