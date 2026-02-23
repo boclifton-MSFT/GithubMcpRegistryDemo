@@ -23,3 +23,9 @@
 **Why:** Header-based approach was functional but not aligned with framework best practices. Refactoring centralizes access control in middleware, simplifies handler logic, and keeps publish business logic separated from access control.
 **Evolution:** Initial minimal guard → framework-integrated auth/authz pipeline.
 **Verification:** `dotnet build --nologo` passed; unauthorized requests return 401; authorized requests return 200.
+
+### 2026-02-23: HTTPS host for publish auth sample
+**By:** Bishop (Backend Dev)
+**What:** Changed `GithubMcpRegistryDemo.http` host variable from `http://localhost:5218` to `https://localhost:7219`.
+**Why:** The API enforces HTTPS redirection, and some REST clients can drop custom headers while following redirects. Pointing sample requests directly at HTTPS keeps `X-Registry-Api-Key` auth behavior deterministic for the `publish-policy authorized request`.
+**Verification:** `dotnet build --nologo` passes; smoke tests show publish unauthorized request returns `401` and authorized request returns `200`.
